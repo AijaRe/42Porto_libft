@@ -12,23 +12,13 @@
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+/*takes the memory space for copying the string to, using malloc*/
 char	*ft_strdup(const char *s)
 {
 	char	*s2;
-	int	len;
-	int	i;
-	
+	int		len;
+	int		i;
+
 	len = ft_strlen(s);
 	s2 = (char *)malloc(sizeof(char) * (len + 1));
 	if (s2 == 0)
@@ -40,23 +30,5 @@ char	*ft_strdup(const char *s)
 		i++;
 	}
 	s2[i] = '\0';
-	return (s2);	
-}
-
-int main()
-{
-    char orig_str[12] = "Itsy bitsy!";
-    char *dup_str;
-    int o_len,d_len;
-
-    dup_str = ft_strdup(orig_str);
-    o_len = strlen(orig_str);
-    d_len = strlen(dup_str);
-
-    printf("Original String: '%s' (%d)\n",
-            orig_str,o_len);
-    printf("Duplicate string: '%s' (%d)\n",
-            dup_str,d_len);
-
-    return(0);
+	return (s2);
 }

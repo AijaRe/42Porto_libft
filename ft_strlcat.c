@@ -10,20 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
-#include <stddef.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+/*appends the NUL-terminated string src to the end of dst. 
+It will append at most size - strlen(dst) - 1 bytes*/ 
+/*NUL-terminate the result*/
+/*return total lenght of the string tried to create..*/
+/*..to detect truncation*/
+/*if size < d_len (doesn't have space to cat)..*/
+/*..the d_len is considered to be size*/
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	d_len;
@@ -42,19 +37,4 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	}
 	dst[d_len + i] = '\0';
 	return (d_len + s_len);
-}
-#include <stdio.h>
-
-int		main(void)
-{
-	char dest[8] = "123";
-	char src[] = "4567890";
-	unsigned int size = 8;
-	unsigned int result;
-
-	printf("-----\ndest = %s\nsrc = %s\nnb = %d\n\n", dest, src, size);
-	result = ft_strlcat(dest, src, size);
-	printf("dest (cat) = %s\nresult = %d\n-----\n", dest, result);
-
-	return (0);
 }

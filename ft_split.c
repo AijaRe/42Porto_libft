@@ -12,47 +12,20 @@
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-/*return an array of strings obtained by splitting ’s’*/ 
-/*use the character ’c’ as a delimiter*/
-/*array must end with a NULL pointer*/
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*res;
-	size_t	i;
-	
-	res = (char *)malloc(sizeof(char) * (len + 1));
-	if (res == 0)
-		return (0);
-	i = 0;
-	while (s[start+i] != '\0' && i < len)
-	{
-		res[i] = s[start+i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);	
-}
+/*while not the end of string and separator is not found..*/
+/*..iterate over the word*/
+/*when there is a new word and separator is found or it's the end..*/
+/*..move general index to this position, start new word index..*/
+/*..and register string number*/
 static int	count_strs(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
 	size_t	strs;
-	
+
 	i = 0;
 	j = 0;
 	strs = 0;
-	
 	while (s[i] != '\0')
 	{
 		while (s[i + j] != '\0' && s[i + j] != c)
@@ -68,66 +41,45 @@ static int	count_strs(char const *s, char c)
 	}
 	return (strs);
 }
+
+/*if - condition to write start of the string*/
+/*keeps iterating until finds new separator or end of string*/
+/*when the condition above is true, outputs string*/
 static void	sep_strs(char const *s, char c, char **new)
 {
-	int	i;
-	int	j;
-	int	a;
-	
+	size_t	i;
+	size_t	j;
+	int		start;
+
 	i = 0;
 	j = 0;
-	a = 0;
-	while (s[i] == c)
-		i++;
-	while (s[i] != '\0')
+	start = -1;
+	while (i <= ft_strlen(s))
 	{
-		if (s[i] == c)
+		if (s[i] != c && start < 0)
+			start = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && start >= 0)
 		{
-			new[a] = ft_substr(s, j, i - j);
-			{
-			a++;
-			j = i + 1;
-			}
+			new[j] = ft_substr(s, start, i - start);
+			j++;
+			start = -1;
 		}
 		i++;
 	}
-	if (j < i)
-	{
-		new[a] = ft_substr(s, j, i - j);
-		a++;
-	}
 }
+
+/*allocate memory for pointers to each new string*/
+/*ft condition: add last NULL string*/
 char	**ft_split(char const *s, char c)
 {
 	char	**new;
-	int	str_nb;
-	int	i;
-	int	j;
-	int	a;
-	
+	int		str_nb;
+
 	str_nb = count_strs(s, c);
 	new = malloc(sizeof(char *) * (str_nb + 1));
 	if (!new)
-		return NULL;
+		return (NULL);
 	sep_strs(s, c, new);
-	new[str_nb + 1] = NULL;
-	return (new);		
+	new[str_nb] = NULL;
+	return (new);
 }
-
-int	main(void)
-{
-	char	**result;
-	int	i = 0;
-	
-	char *test = "test the string";
-	result = ft_split(test, ' ');
-	while (result[i] != 0)
-	{
-		printf("%s\n", result[i]);
-		free(result[i]);
-		i++;
-	}
-	free(result);
-	return (0);
-}
-

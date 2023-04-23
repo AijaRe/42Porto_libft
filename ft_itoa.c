@@ -12,9 +12,12 @@
 
 #include "libft.h"
 
-static int	ft_length(n)
+/*count the length of the integer*/
+/*how many times it divides by 10*/
+static	int	ft_length(int n)
 {
 	int	length;
+
 	length = 0;
 	if (n == 0)
 		return (1);
@@ -27,17 +30,32 @@ static int	ft_length(n)
 	}
 	return (length);
 }
+
+static char	*ft_max_neg(void)
+{
+	char	*res;
+
+	res = malloc(sizeof(char) * 12);
+	res = "-2147483648";
+	return (res);
+}
+
+/*convert integer to character*/
+/*0 has a special ondition because can't devide by 0*/
+/*cap the last position with NUl before altering length variable*/
+/*start form last position and fill with the remainder as character*/
+/*to get the next number, divide by 10 and back up one position*/
 char	*ft_itoa(int n)
 {
 	char	*res;
-	int	len;
-	int	i;
-	
+	int		len;
+
+	if (n == -2147483648)
+		return (ft_max_neg());
 	len = ft_length(n);
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (res == 0)
 		return (0);
-	i = 0;
 	if (n == 0)
 		res[0] = '0';
 	if (n < 0)
@@ -52,16 +70,5 @@ char	*ft_itoa(int n)
 		n = n / 10;
 		len--;
 	}
-	return (res);	
-}
-#include <stdio.h>
-
-int	main(void)
-{
-	int	a = 123;
-	printf("ft_itoa 123: %s\n", ft_itoa(a));
-	int	b = -10;
-	printf("ft_itoa -10: %s\n", ft_itoa(b));
-	int	c = 0;
-	printf("ft_itoa 0: %s\n", ft_itoa(c));
+	return (res);
 }

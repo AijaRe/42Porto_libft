@@ -10,7 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
+#include "libft.h"
+
+/*convert string to integer*/
+/*check whitespace*/
+/*check single + or - sign*/
+/*if there is - sign, return negative number*/
+/*start number with zero and add the last character turned into integer*/
+/*then multiply by 10 and work your way up*/
 
 int	ft_atoi(const char *nptr)
 {
@@ -38,20 +45,5 @@ int	ft_atoi(const char *nptr)
 	if (sign == -1)
 		return (-nb);
 	return (nb);
-}
-#include <stdio.h>
-#include <stdlib.h>
-
-int	main(void)
-{
-	char	*s = "   -1234ab567";
-	printf("atoi: %d\n", atoi(s));
-	printf("ft_atoi: %d\n", ft_atoi(s));
-	char	*s1 = "   +1234ab567";
-	printf("atoi: %d\n", atoi(s1));
-	printf("ft_atoi: %d\n", ft_atoi(s1));
-	char	*s2 = "   -+--1234ab567";
-	printf("atoi: %d\n", atoi(s2));
-	printf("ft_atoi: %d\n", ft_atoi(s2));
 }
 

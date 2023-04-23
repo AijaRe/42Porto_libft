@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+/*compares at most the first n characters of two strings in ascii order*/
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;

@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 12:15:46 by arepsa            #+#    #+#             */
-/*   Updated: 2023/04/19 10:45:31 by arepsa           ###   ########.fr       */
+/*   Created: 2023/04/19 13:07:14 by arepsa            #+#    #+#             */
+/*   Updated: 2023/04/19 13:08:18 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-/*Searches within the n bytes of the block of memory pointed by s..*/
-/*..for the first occurrence of char c*/
-/*doesn't take into account NUL char, stops at defined length n*/
-/*returns a pointer to the matching byte..*/
-/*..or NULL if the character does not occur*/
-void	*ft_memchr(const void *s, int c, size_t n)
+/*Apply the function ’f’ on each char of the str passed as argument,*/
+/*passing its index as first argument.*/
+/*Each character is passed by address to ’f’ to be modified if necessary.*/
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t		i;
-	char		*str;
+	unsigned int	i;
 
-	str = (char *)s;
 	i = 0;
-	while (i < n)
+	if (s)
 	{
-		if (str[i] == c)
-			return ((void *)&str[i]);
-		i++;
+		while (s[i] != '\0')
+		{
+			(*f)(i, &s[i]);
+			i++;
+		}
 	}
-	return (0);
 }

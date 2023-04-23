@@ -12,6 +12,10 @@
 
 #include "libft.h"
 
+/*locates the first occurrence of the null-terminated string little..*/
+/*..in the string big*/
+/*not more than len characters are searched*/
+/*if the little tring is empty, return string big*/
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
@@ -33,17 +37,4 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		j = 0;
 	}
 	return (0);
-}
-#include <string.h>
-#include <stdio.h>
-
-int	main(void)
-{
-	const char *bigstr = "Foo Bar Baz";
-        const char *littlestr = "Bar";
-        char *ptr;
-
-        ptr = ft_strnstr(bigstr, littlestr, 10);
-        printf("ft_strnstr: %s\n", ptr);
-        
 }

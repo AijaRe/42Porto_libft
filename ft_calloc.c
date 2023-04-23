@@ -11,54 +11,21 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-void	*ft_memset(void *s, int c, size_t n)
-{
-	while (n != 0)
-	{
-		*(unsigned char *)s = (unsigned char) c;
-		s++;
-		n--;
-	}
-	return s;
-}
+
+/*allocates memory for an array of nmemb elements of size bytes each..
+..and returns a pointer to the allocated memory. 
+The memory is set to zero.*/
+/*If nmemb or size is 0, then calloc() returns either NULL, 
+or a unique pointer value that can later be successfully passed to free().*/
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void *p;
+	void	*p;
+
+	if (nmemb == 0 || size == 0)
+		return (NULL);
 	p = malloc (nmemb * size);
-	if (p == 0)
-		return (0);
+	if (!p)
+		return (NULL);
 	ft_memset (p, '\0', nmemb * size);
 	return (p);
-}
-
-int main()
-{
-    int *p, i, n;
-
-    printf("Enter the size of the array: ");
-    scanf("%d", &n);
-
-    p = (int*)calloc(n, sizeof(int));
-
-    if(p==NULL)
-    {
-        printf("Memory allocation failed");
-        exit(1); // exit the program
-    }
-
-    for(i = 0; i < n; i++)
-    {
-        printf("Enter %d element: ", i);
-        scanf("%d", p+i);
-    }
-    printf("\nprinting array of %d integers\n\n", n);
-
-    // calculate sum
-
-    for(i = 0; i < n; i++)
-    {
-        printf("%d ", *(p+i));
-    }
-    // signal to operating system program ran fine
-    return 0;
 }

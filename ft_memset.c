@@ -12,35 +12,20 @@
 
 #include "libft.h"
 
+/*fill a block of memory of n bytes with a particular value c*/
 void	*ft_memset(void *s, int c, size_t n)
 {
-	while (n != 0)
+	unsigned char	*str;
+	unsigned char	ch;
+	size_t			i;
+
+	str = (unsigned char *)s;
+	ch = (unsigned char)c;
+	i = 0;
+	while (i < n)
 	{
-		*(unsigned char *)s = (unsigned char) c;
-		s++;
-		n--;
+		str[i] = ch;
+		i++;
 	}
-	return s;
-}
-#include <stdio.h>
-#include <string.h>
-
-int main () {
-   char str[50];
-
-   strcpy(str,"This is original function");
-   puts(str);
-
-   memset(str,'$',7*sizeof(char));
-   puts(str);
-   
-   char str2[50];
-
-   strcpy(str2,"This is ft_function");
-   puts(str2);
-
-   ft_memset(str2,'$',7*sizeof(char));
-   puts(str2);
-   
-   return(0);
+	return (s);
 }

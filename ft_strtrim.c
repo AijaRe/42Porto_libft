@@ -11,48 +11,19 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*res;
-	size_t	i;
-	
-	res = (char *)malloc(sizeof(char) * (len + 1));
-	if (res == 0)
-		return (0);
-	i = 0;
-	while (s[start+i] != '\0' && i < len)
-	{
-		res[i] = s[start+i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);	
-}
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s != '\0' && *s != c)
-		s++;
-	if (*s == c)
-		return ((char *)s);
-	return (0);
-}
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
 
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+/*returns a copy of ’s1’ with the characters specified in ’set’ removed..*/
+/*..from the beginning and the end of the string*/
+/*send the set to strchr to compare char by char of the string*/
+/*if set char exists, move forward*/
+/*do same from the end, using stlen as counter*/
+/*length of result str: last index - first index + 1*/
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*res;
-	int	i;
-	int	j;
-	
+	int		i;
+	int		j;
+
 	if (!s1 || !set)
 		return (0);
 	i = 0;
@@ -64,8 +35,4 @@ char	*ft_strtrim(char const *s1, char const *set)
 	res = (char *)malloc(sizeof(char) * (j - i + 1));
 	res = ft_substr(s1, i, j - i + 1);
 	return (res);
-}
-int	main(void)
-{
-	printf("%s\n", ft_strtrim("123abcde21", "231"));
 }
