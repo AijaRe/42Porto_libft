@@ -25,12 +25,13 @@ SRCS =	ft_atoi.c	ft_bzero.c	ft_calloc.c\
 		ft_strtrim.c	ft_substr.c		ft_tolower.c\
 		ft_toupper.c
 	
-BONUS = ft_lstnew.c      ft_lstadd_front.c	#ft_lstmap.c       ft_lstlast.c     ft_lstiter.c\
-#		ft_lstsize.c     ft_lstclear.c     ft_lstdelone.c\
-#		ft_lstadd_back.c 
+BONUS = ft_lstnew.c     ft_lstadd_front.c	ft_lstsize.c\
+		ft_lstlast.c	ft_lstadd_back.c	ft_lstdelone.c\
+		ft_lstclear.c	ft_lstmap.c         ft_lstiter.c\     
 
 CC	:= cc
-CFLAGS	:= -Wall -Wextra -Werror -I. #include header files that are in the current directory
+CFLAGS	:= -Wall -Wextra -Werror
+CPPFLAGS = -I. #include header files that are in the current directory
 C_LIB	:= ar -rcs #create and index library
 RM	:= /bin/rm -f
 SRCS_O	:= $(SRCS:.c=.o) #substitute .c with .o
@@ -52,7 +53,7 @@ bonus:	$(NAME) $(BONUS_O)
 
 #implicit compilation:
 #%.o: %.c
-#	$(CC) $(CFLAGS) -c $< -o $@
+#	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 #remove .o files
 clean:
