@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 13:35:31 by arepsa            #+#    #+#             */
-/*   Updated: 2023/04/20 13:35:55 by arepsa           ###   ########.fr       */
+/*   Created: 2023/04/24 07:59:17 by arepsa            #+#    #+#             */
+/*   Updated: 2023/04/24 07:59:57 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Add the node ’new’ at the beginning of the list.*/
-/*lst - address of a pointer to the first link of a list.*/
-/*new - link to add at the beginning of the list.*/
-void	ft_lstadd_front(t_list **lst, t_list *new)
+/*Add the node ’new’ at the end of the list.*/
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (!new)
-	        return ;
-	new->next = *lst;
-	*lst = new;
+	t_list	*last;
+
+	if (*lst == NULL)
+		*lst = new;
+	last = ft_lstlast(*lst);
+	last->next = new;
 }
-/*int    main(void)
+/*int main()
 {
-    t_list	*head;
+	t_list	*head;
     t_list	*new;
     
-    new = ft_lstnew("Last goes first");
-    ft_lstadd_front(&head, new);
+	head = ft_lstnew("I am head");
+    new = ft_lstnew("Last goes last");
+    ft_lstadd_back(&head, new);
     printf("head.content: %s\n", (char *)head->content);
     printf("new.content: %s\n", (char *)new->content);
     return (0);
 }*/
-

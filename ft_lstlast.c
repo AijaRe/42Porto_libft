@@ -22,7 +22,7 @@ t_list	*ft_lstlast(t_list *lst)
 		lst = lst->next;	
 	return (lst);
 }
-int	main()
+/*int	main()
 {
 	t_list	*head = NULL;
 	t_list	*new;
@@ -39,4 +39,4 @@ int	main()
 	}
 printf("Last should be 9: %d\n", *(int*)ft_lstlast(head)->content);
 	return (0);
-}
+}*/
