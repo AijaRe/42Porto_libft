@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= libft.a
+NAME		:= libft.a
 		
-SRCS =	ft_atoi.c	ft_bzero.c	ft_calloc.c\
+SRCS =	ft_atoi.c		ft_bzero.c		ft_calloc.c\
 		ft_isalnum.c	ft_isalpha.c	ft_isascii.c\
 		ft_isdigit.c	ft_isprint.c	ft_itoa.c\
 		ft_memchr.c		ft_memcmp.c		ft_memcpy.c\
@@ -27,37 +27,37 @@ SRCS =	ft_atoi.c	ft_bzero.c	ft_calloc.c\
 	
 BONUS = ft_lstnew.c     ft_lstadd_front.c	ft_lstsize.c\
 		ft_lstlast.c	ft_lstadd_back.c	ft_lstdelone.c\
-		ft_lstclear.c	ft_lstmap.c         ft_lstiter.c\     
+		ft_lstclear.c	ft_lstmap.c			ft_lstiter.c     
 
 CC	:= cc
 CFLAGS	:= -Wall -Wextra -Werror
 CPPFLAGS = -I. #include header files that are in the current directory
-C_LIB	:= ar -rcs #create and index library
+LIBFLAGS	:= ar -rcs #create and index library
 RM	:= /bin/rm -f
 SRCS_O	:= $(SRCS:.c=.o) #substitute .c with .o
 BONUS_O	:= $(BONUS:.c=.o)
-OBJS	:= $(SRCS_O) $(BONUS_O)
 
 #create and index library (ar - archive, -r insert files by replacement, -c create the archve, -s index the files
+
+#create .o files; also default compilation
+# $< first prerequisite aka .c; $@ output/targer file aka .o
+#%.o : %.c
+#	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 #default target - create libft.a
 all: $(NAME)
 
 #Mandatory part
 $(NAME): $(SRCS_O)
-	$(C_LIB) $(NAME) $(SRCS_O)
+	$(LIBFLAGS) $(NAME) $(SRCS_O)
 
 #Bonus part
-bonus:	$(NAME) $(BONUS_O)
-	$(C_LIB) $(NAME) $(BONUS_O)
-
-#implicit compilation:
-#%.o: %.c
-#	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+bonus: $(NAME) $(BONUS_O)
+	$(LIBFLAGS) $(NAME) $(BONUS_O)
 
 #remove .o files
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(SRCS_O) $(BONUS_O)
 
 #remove static library
 fclean: clean
@@ -67,4 +67,4 @@ fclean: clean
 re: fclean all
 
 #targets declared as .PHONY will force the command even if there is a subdirectory or file with it's name
-.PHONY: all clean fclean bonus re
+.PHONY: all clean fclean re bonus

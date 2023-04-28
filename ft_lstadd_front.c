@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:35:31 by arepsa            #+#    #+#             */
-/*   Updated: 2023/04/20 13:35:55 by arepsa           ###   ########.fr       */
+/*   Updated: 2023/04/26 14:41:29 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,7 @@
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (!new)
-	        return ;
+		return ;
 	new->next = *lst;
 	*lst = new;
 }
-/*int    main(void)
-{
-    t_list	*head;
-    t_list	*new;
-    
-    new = ft_lstnew("Last goes first");
-    ft_lstadd_front(&head, new);
-    printf("head.content: %s\n", (char *)head->content);
-    printf("new.content: %s\n", (char *)new->content);
-    return (0);
-}*/
-

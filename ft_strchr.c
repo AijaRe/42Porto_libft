@@ -14,11 +14,16 @@
 
 /*returns a pointer to the first occurrence of character in the string*/
 /*if looking for \0 , returns pointer to the null char*/
+/*cast to char to avoid overflow if the argument passed is 
+outside the range of char*/
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != '\0' && *s != c)
+	char	ch;
+
+	ch = (char)c;
+	while (*s != '\0' && *s != ch)
 		s++;
-	if (*s == c)
+	if (*s == ch)
 		return ((char *)s);
 	return (0);
 }

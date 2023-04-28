@@ -32,7 +32,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	while (s1[j - 1] && ft_strchr(set, s1[j]) != 0 && j > i)
 		j--;
-	res = (char *)malloc(sizeof(char) * (j - i + 1));
 	res = ft_substr(s1, i, j - i + 1);
 	return (res);
 }

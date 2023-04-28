@@ -14,6 +14,7 @@
 
 /*count the length of the integer*/
 /*how many times it divides by 10*/
+/*negatives get extra space for '-'*/
 static	int	ft_length(int n)
 {
 	int	length;
@@ -36,12 +37,12 @@ static char	*ft_max_neg(void)
 	char	*res;
 
 	res = malloc(sizeof(char) * 12);
-	res = "-2147483648";
+	ft_strlcpy(res, "-2147483648", 12);
 	return (res);
 }
 
 /*convert integer to character*/
-/*0 has a special ondition because can't devide by 0*/
+/*0 has a special condition because can't divide by 0*/
 /*cap the last position with NUl before altering length variable*/
 /*start form last position and fill with the remainder as character*/
 /*to get the next number, divide by 10 and back up one position*/

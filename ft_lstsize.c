@@ -28,19 +28,3 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (count);
 }
-/*int	main()
-{
-	t_list	*head = NULL;
-	t_list	*new;
-	int		i = 0;
-
-	while (i < 10)
-	{
-		new = ft_lstnew((int *)&i);
-		new->next = head;
-		head = new;
-		i++;
-	}
-printf("Size should be 10: %d\n", ft_lstsize(head));
-	return (0);
-}*/

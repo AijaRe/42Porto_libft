@@ -42,6 +42,21 @@ static int	count_strs(char const *s, char c)
 	return (strs);
 }
 
+/*free memory in case of error in new strings*/
+static void	free_strs(char **new, int j)
+{
+	int	i;
+
+	i = 0;
+	while (i < j)
+	{
+		free(new[i]);
+		i++;
+	}
+	free(new);
+	return ;
+}
+
 /*if - condition to write start of the string*/
 /*keeps iterating until finds new separator or end of string*/
 /*when the condition above is true, outputs string*/
@@ -61,6 +76,11 @@ static void	sep_strs(char const *s, char c, char **new)
 		else if ((s[i] == c || i == ft_strlen(s)) && start >= 0)
 		{
 			new[j] = ft_substr(s, start, i - start);
+			if (!new[j])
+			{
+				free_strs(new, j);
+				return ;
+			}
 			j++;
 			start = -1;
 		}
@@ -75,6 +95,8 @@ char	**ft_split(char const *s, char c)
 	char	**new;
 	int		str_nb;
 
+	if (!s)
+		return (NULL);
 	str_nb = count_strs(s, c);
 	new = malloc(sizeof(char *) * (str_nb + 1));
 	if (!new)

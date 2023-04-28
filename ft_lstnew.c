@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:43:43 by arepsa            #+#    #+#             */
-/*   Updated: 2023/04/20 11:44:09 by arepsa           ###   ########.fr       */
+/*   Updated: 2023/04/26 14:40:02 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ the value of the parameter ’content’. The variable
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;
-	
+
 	new = malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
@@ -28,11 +28,3 @@ t_list	*ft_lstnew(void *content)
 	new->next = NULL;
 	return (new);
 }
-/*int	main(void)
-{
-	t_list	*new;
-	
-	new = ft_lstnew("Hello");
-	printf("%s", (char *)new->content);
-	return (0);
-}*/

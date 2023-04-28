@@ -14,14 +14,18 @@
 
 /*searches for the last occurrence of the character in the string*/
 /*s[i] -> end of string*/
+/*cast to char to avoid overflow if the argument passed is 
+outside the range of char*/
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	int		i;
+	char	ch;
 
+	ch = (char)c;
 	i = ft_strlen(s);
-	while (i > 0 && s[i] != c)
+	while (i > 0 && s[i] != ch)
 		i--;
-	if (s[i] == c)
+	if (s[i] == ch)
 		return ((char *)&s[i]);
 	return (0);
 }

@@ -12,8 +12,8 @@
 
 #include "libft.h"
 
-/*appends the NUL-terminated string src to the end of dst. 
-It will append at most size - strlen(dst) - 1 bytes*/ 
+/*appends the NUL-terminated string src to the end of dst.
+It will append at most (size - strlen(dst) - 1) bytes*/
 /*NUL-terminate the result*/
 /*return total lenght of the string tried to create..*/
 /*..to detect truncation*/

@@ -14,20 +14,25 @@
 
 /*Allocates with malloc and returns a substring from the string ’s’*/
 /*substring begins at index ’start’ and is of max size ’len*/
+/* if (len > ft_strlen(s + start)) is to check if the length of the 
+substring returned by the function does not exceed the length 
+of the substring starting from the start*/
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*res;
 	size_t	i;
 
 	if (!s)
-		return (0);
-	if (ft_strlen(s) < start)
+		return (NULL);
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
+	if (start > ft_strlen(s))
 		len = 0;
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (!res)
-		return (0);
+		return (NULL);
 	i = 0;
-	while (s[start + i] != '\0' && i < len)
+	while (i < len)
 	{
 		res[i] = s[start + i];
 		i++;

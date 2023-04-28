@@ -12,11 +12,14 @@
 
 #include "libft.h"
 
+/*Outputs the integer ’n’ to the given file
+descriptor*/
+/*turn int into char and print*/
 void	ft_putnbr_fd(int n, int fd)
 {
 	long	nb;
 
-	nb = n;
+	nb = (long)n;
 	if (nb < 0)
 	{
 		ft_putchar_fd('-', fd);
