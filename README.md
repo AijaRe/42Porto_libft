@@ -63,7 +63,16 @@ Included funtions:
 • ft_lstclear - Deletes and frees the given node and every successor of that node, using the function ’del’ and free(3). Finally, the pointer to the list must be set to NULL.  
 • ft_lstiter - Iterates the list ’lst’ and applies the function ’f’ on the content of each node.  
 • ft_lstmap - Iterates the list ’lst’ and applies the function ’f’ on the content of each node. Creates a new list resulting of the successive applications of the function ’f’. The ’del’ function is used to delete the content of a node if needed.
-## Resources for linked lists
+
+## Create library
+
+Create the lib libft.a with make
+
+```bash
+  make
+``` 
+
+## Useful links (for linked lists)
 
  - [General overview with pseudo-code from CS50](https://www.youtube.com/watch?v=zQI3FyWm144)
  - [Linked lists for beginners - Code Vault](https://www.youtube.com/watch?v=uBZHMkpsTfg&list=PLfqABt5AS4FmXeWuuNDS3XGENJO1VYGxl)
