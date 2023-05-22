@@ -48,7 +48,7 @@ BONUS_O	:= $(BONUS:.c=.o)
 all: $(NAME)
 
 #Mandatory part
-$(NAME):  $(SRCS_O)
+$(NAME): $(SRCS_O)
 	$(LIBFLAGS) $(NAME) $(SRCS_O)
 
 #Bonus part
