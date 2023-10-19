@@ -64,6 +64,19 @@ Included funtions:
 • ft_lstiter - Iterates the list ’lst’ and applies the function ’f’ on the content of each node.  
 • ft_lstmap - Iterates the list ’lst’ and applies the function ’f’ on the content of each node. Creates a new list resulting of the successive applications of the function ’f’. The ’del’ function is used to delete the content of a node if needed.
 
+## Norminette
+
+This project has to be written in accordance with the Norm, which is the coding standard of the school 42.
+
+The Norm includes:
+- Forbidden: for, do...while, switch, case, goto, ternary operators and variable-length arrays 
+- Maximum of 25 lines per function
+- Maximum line length: 80 columns
+- Maximum 4 parameters per function 
+- Variable assignments and declarations must be on separate lines
+- etc...
+
+  
 ## Create library
 
 Create the lib libft.a with make
