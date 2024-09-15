@@ -17,7 +17,7 @@
 /*send the set to strchr to compare char by char of the string*/
 /*if set char exists, move forward*/
 /*do same from the end, using stlen as counter*/
-/*length of result str: last index - first index + 1*/
+/*length of result str: last index - first index*/
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*res;
@@ -30,8 +30,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	j = ft_strlen(s1);
 	while (s1[i] != '\0' && ft_strchr(set, s1[i]) != 0)
 		i++;
-	while (s1[j - 1] && ft_strchr(set, s1[j]) != 0 && j > i)
+	while (s1[j - 1] && ft_strchr(set, s1[j - 1]) != 0 && j > i)
 		j--;
-	res = ft_substr(s1, i, j - i + 1);
+	res = ft_substr(s1, i, j - i);
 	return (res);
 }
